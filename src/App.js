@@ -11,11 +11,13 @@ import InfoBox from "./InfoBox/InfoBox";
 import Map from "./Map/Map";
 import Table from "./Table/Table";
 import { sortData } from "./utils";
+import LineGraph from "./LineGraph/LineGraph";
 //https://disease.sh/v3/covid-19/countries
 const App = () => {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
+  const [casesType, setCasesType] = useState("cases");
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
@@ -103,7 +105,8 @@ const App = () => {
         <CardContent>
           <h3>Live Cases by country</h3>
           <Table countries={tableData} />
-          <h3>Worldwide new cases</h3>
+          <h3>Worldwide new {casesType}</h3>
+          <LineGraph casesType={casesType} />
         </CardContent>
       </Card>
     </div>
